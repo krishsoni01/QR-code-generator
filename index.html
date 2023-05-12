@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-code generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+        body {
+            background-color: rgb(90, 90, 90);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+
+        }
+
+        .container {
+            background-color: white;
+            width: 300px;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        }
+
+        .container p {
+            text-align: center;
+            font-weight: bold;
+
+        }
+
+        .container input {
+            width: 96%;
+            height: 34px;
+            padding: 1px 5px;
+            font-size: 16px;
+            font-family: 'Poppins';
+            outline: none;
+            /* margin: 10px 1px 20px; */
+            margin: 10px 1px 1px;
+
+        }
+
+        .container button {
+            color: white;
+            width: 100%;
+            /* background: linear-gradient(to top, #c471f5 0%, #fa71cd 100%); */
+            background: #c471f5;
+            font-family: poppins;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            /* margin: 8px 0px; */
+            margin: 0px ;
+            height: 30px;
+            font-size: 15px;
+        }
+
+        #imgbox {
+            display: flex;
+            justify-content: center;
+            max-height: 0%;
+            transition: max-height 0.6s;
+            margin: 5px 10px;
+            overflow: hidden;
+            width: 200px;
+        }
+
+        #imgbox img {
+            width: 100%;
+            padding: 10px;
+           
+
+        }
+
+        #imgbox.show-img {
+            max-height: 300px;
+            margin: 5px auto;
+            /* border: 2px solid #c471f5 ; */
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Enter Your Text Or URL..</p>
+        <input type="text" placeholder="Text Or URL.." id="qrText">
+        <div id="imgbox">
+            <img src="" id="qrImg">
+        </div>
+        <button onclick="myfunction()">Generate QR Code</button>
+
+    </div>
+
+
+
+    <!-- script starts from here... -->
+    <script>
+        let qrText = document.getElementById("qrText");
+        let imgbox = document.getElementById("imgbox");
+        let qrImg = document.getElementById("qrImg");
+        function myfunction() {
+            if (qrText.value.length > 0 ) {
+                qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value;
+            imgbox.classList.add("show-img");
+            }  
+        }
+
+
+
+    </script>
+</body>
+
+</html>
